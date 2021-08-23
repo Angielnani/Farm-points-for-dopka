@@ -1,5 +1,6 @@
 import pickle
 import datetime
+from datetime import datetime
 
 with open('data.pickle', 'rb') as file:
     data = pickle.load(file)
@@ -49,3 +50,16 @@ def func5(data, word):
             was_writed += 1
 
     return was_writed / len(data)
+
+
+def func_all(data):
+    mas_time = []
+    for item in data:
+        time = int(item['created_utc'])
+        mas_time.append(time)
+    min_time = min(mas_time)
+    print(min_time)
+    print(datetime.utcfromtimestamp(min_time).strftime('%d.%m.%Y'))
+
+
+func_all(data)
